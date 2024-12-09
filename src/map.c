@@ -6,7 +6,7 @@
 /*   By: cle-berr <cle-berr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 09:36:30 by cle-berr          #+#    #+#             */
-/*   Updated: 2024/12/06 16:56:30 by cle-berr         ###   ########.fr       */
+/*   Updated: 2024/12/09 11:02:12 by cle-berr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,15 +35,15 @@ static void	get_player_position(t_solong *gameinfo)
 	}
 }
 
-void get_map(int fd, t_solong *gameinfo)
+void	get_map(int fd, t_solong *gameinfo)
 {
-	char *line;
-	char *new_line;
-	char *tmp_line;
+	char	*line;
+	char	*new_line;
+	char	*tmp_line;
 
 	line = get_next_line(fd);
 	if (!line)
-		return;
+		return ;
 	gameinfo->y = ft_strlen(line) - 1;
 	gameinfo->x = 1;
 	new_line = get_next_line(fd);
@@ -60,4 +60,3 @@ void get_map(int fd, t_solong *gameinfo)
 	free(line);
 	get_player_position(gameinfo);
 }
-

@@ -6,23 +6,24 @@
 /*   By: cle-berr <cle-berr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 09:36:03 by cle-berr          #+#    #+#             */
-/*   Updated: 2024/12/06 12:10:29 by cle-berr         ###   ########.fr       */
+/*   Updated: 2024/12/09 11:05:54 by cle-berr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/solong.h"
 
-void finish(t_solong *gameinfo)
+void	finish(t_solong *gameinfo)
 {
 	if (gameinfo->c_to_get == 0)
 	{
 		gameinfo->playermovs++;
-		ft_printf("Congratulation you won with %i movements\n", gameinfo->playermovs);
+		ft_printf("Congratulation you won with %i movements\n" \
+						, gameinfo->playermovs);
 		close_game(gameinfo);
 	}
 }
 
-void w_movement(t_solong *gameinfo)
+void	w_movement(t_solong *gameinfo)
 {
 	if (gameinfo->map[gameinfo->pl_x - 1][gameinfo->pl_y] == '0')
 	{
@@ -46,12 +47,10 @@ void w_movement(t_solong *gameinfo)
 		ft_printf("number of movements: %i\n", gameinfo->playermovs);
 	}
 	else if (gameinfo->map[gameinfo->pl_x - 1][gameinfo->pl_y] == 'E')
-	{
 		finish(gameinfo);
-	}
 }
 
-void a_movement(t_solong *gameinfo)
+void	a_movement(t_solong *gameinfo)
 {
 	if (gameinfo->map[gameinfo->pl_x][gameinfo->pl_y - 1] == '0')
 	{
@@ -75,12 +74,10 @@ void a_movement(t_solong *gameinfo)
 		ft_printf("number of movements: %i\n", gameinfo->playermovs);
 	}
 	else if (gameinfo->map[gameinfo->pl_x][gameinfo->pl_y - 1] == 'E')
-	{
 		finish(gameinfo);
-	}
 }
 
-void s_movement(t_solong *gameinfo)
+void	s_movement(t_solong *gameinfo)
 {
 	if (gameinfo->map[gameinfo->pl_x + 1][gameinfo->pl_y] == '0')
 	{
@@ -104,12 +101,10 @@ void s_movement(t_solong *gameinfo)
 		ft_printf("number of movements: %i\n", gameinfo->playermovs);
 	}
 	else if (gameinfo->map[gameinfo->pl_x + 1][gameinfo->pl_y] == 'E')
-	{
-		finish(gameinfo);;
-	}
+		finish(gameinfo);
 }
 
-void d_movement(t_solong *gameinfo)
+void	d_movement(t_solong *gameinfo)
 {
 	if (gameinfo->map[gameinfo->pl_x][gameinfo->pl_y + 1] == '0')
 	{
@@ -133,7 +128,5 @@ void d_movement(t_solong *gameinfo)
 		ft_printf("number of movements: %i\n", gameinfo->playermovs);
 	}
 	else if (gameinfo->map[gameinfo->pl_x][gameinfo->pl_y + 1] == 'E')
-	{
 		finish(gameinfo);
-	}
 }

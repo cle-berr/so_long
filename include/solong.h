@@ -6,7 +6,7 @@
 /*   By: cle-berr <cle-berr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 14:48:53 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/12/06 17:18:47 by cle-berr         ###   ########.fr       */
+/*   Updated: 2024/12/09 10:56:11 by cle-berr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,6 @@ bool	check_walls(t_solong *gameinfo);
 bool	check_path(t_solong *gameinfo);
 int		close_game(t_solong *gameinfo);
 void	free_maps(char **map);
-void 	free_img(t_solong *gameinfo);
+void	free_img(t_solong *gameinfo);
 
 #endif
