@@ -6,7 +6,7 @@
 /*   By: cle-berr <cle-berr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 14:48:53 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/12/09 10:56:11 by cle-berr         ###   ########.fr       */
+/*   Updated: 2024/12/19 17:01:28 by cle-berr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,15 @@ typedef struct s_solong
 	void	*mlx_ptr;
 	void	*window_ptr;
 	void	*player;
+	void	*player_down;
+	void	*player_right;
+	void	*player_up;
+	void	*player_left;
 	void	*floor;
 	void	*wall;
 	void	*coin;
 	void	*exit;
+	void	*mob;
 	char	**map;
 	int		x;
 	int		y;
@@ -48,10 +53,11 @@ typedef struct s_solong
 	int		acc_e;
 }	t_solong;
 
+bool	other_charac(int x, int y, t_solong *gameinfo);
 void	get_map(int fd, t_solong *gameinfo);
 void	create_window(t_solong *gameinfo);
 void	manage_loop(t_solong *gameinfo);
-void	wind_images(t_solong *gameinfo);
+void	wind_images(t_solong *gameinfo, int side);
 void	w_movement(t_solong *gameinfo);
 void	a_movement(t_solong *gameinfo);
 void	s_movement(t_solong *gameinfo);
@@ -62,5 +68,9 @@ bool	check_path(t_solong *gameinfo);
 int		close_game(t_solong *gameinfo);
 void	free_maps(char **map);
 void	free_img(t_solong *gameinfo);
+bool	error(char *msg);
+void	death(t_solong *gameinfo);
+void	finish(t_solong *gameinfo);
+void	display_move(t_solong *gameinfo, char *msg);
 
 #endif

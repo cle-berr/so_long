@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pathcheck.c                                        :+:      :+:    :+:   */
+/*   pathcheck_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cle-berr <cle-berr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 09:36:12 by cle-berr          #+#    #+#             */
-/*   Updated: 2024/12/19 17:34:02 by cle-berr         ###   ########.fr       */
+/*   Updated: 2024/12/19 17:32:54 by cle-berr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	getinfo(t_solong *gameinfo, int c, int e)
 
 static void	flood_fill(char **map, int x, int y, t_solong *gameinfo)
 {
-	if (map[x][y] == '1' || map[x][y] == 'V')
+	if (map[x][y] == '1' || map[x][y] == 'M' || map[x][y] == 'V')
 		return ;
 	if (map [x][y] == 'E' && gameinfo->ecount > 0)
 	{

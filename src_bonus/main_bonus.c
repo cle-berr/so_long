@@ -6,7 +6,7 @@
 /*   By: cle-berr <cle-berr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 09:36:43 by cle-berr          #+#    #+#             */
-/*   Updated: 2024/12/11 11:50:08 by cle-berr         ###   ########.fr       */
+/*   Updated: 2024/12/18 17:23:41 by cle-berr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,12 @@ void	free_img(t_solong *gameinfo)
 	mlx_destroy_image(gameinfo->mlx_ptr, gameinfo->coin);
 	mlx_destroy_image(gameinfo->mlx_ptr, gameinfo->floor);
 	mlx_destroy_image(gameinfo->mlx_ptr, gameinfo->wall);
-	mlx_destroy_image(gameinfo->mlx_ptr, gameinfo->player);
+	mlx_destroy_image(gameinfo->mlx_ptr, gameinfo->player_down);
+	mlx_destroy_image(gameinfo->mlx_ptr, gameinfo->player_left);
+	mlx_destroy_image(gameinfo->mlx_ptr, gameinfo->player_up);
+	mlx_destroy_image(gameinfo->mlx_ptr, gameinfo->player_right);
 	mlx_destroy_image(gameinfo->mlx_ptr, gameinfo->exit);
+	mlx_destroy_image(gameinfo->mlx_ptr, gameinfo->mob);
 }
 
 bool	ber(char *argv)

@@ -1,27 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   player_move.c                                      :+:      :+:    :+:   */
+/*   player_move_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cle-berr <cle-berr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 09:36:03 by cle-berr          #+#    #+#             */
-/*   Updated: 2024/12/19 16:36:56 by cle-berr         ###   ########.fr       */
+/*   Updated: 2024/12/19 17:01:06 by cle-berr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/solong.h"
-
-void	finish(t_solong *gameinfo)
-{
-	if (gameinfo->c_to_get == 0)
-	{
-		gameinfo->playermovs++;
-		ft_printf("Congratulation you won with %i movements\n" \
-						, gameinfo->playermovs);
-		close_game(gameinfo);
-	}
-}
 
 void	w_movement(t_solong *gameinfo)
 {
@@ -31,9 +20,9 @@ void	w_movement(t_solong *gameinfo)
 		gameinfo->pl_x -= 1;
 		gameinfo->map[gameinfo->pl_x][gameinfo->pl_y] = 'P';
 		free_img(gameinfo);
-		wind_images(gameinfo, 0);
+		wind_images(gameinfo, 1);
 		gameinfo->playermovs++;
-		ft_printf("number of movements: %i\n", gameinfo->playermovs);
+		display_move(gameinfo, "Move :");
 	}
 	else if (gameinfo->map[gameinfo->pl_x - 1][gameinfo->pl_y] == 'C')
 	{
@@ -41,13 +30,15 @@ void	w_movement(t_solong *gameinfo)
 		gameinfo->pl_x -= 1;
 		gameinfo->map[gameinfo->pl_x][gameinfo->pl_y] = 'P';
 		free_img(gameinfo);
-		wind_images(gameinfo, 0);
+		wind_images(gameinfo, 1);
 		gameinfo->c_to_get--;
 		gameinfo->playermovs++;
-		ft_printf("number of movements: %i\n", gameinfo->playermovs);
+		display_move(gameinfo, "Move :");
 	}
 	else if (gameinfo->map[gameinfo->pl_x - 1][gameinfo->pl_y] == 'E')
 		finish(gameinfo);
+	else if (gameinfo->map[gameinfo->pl_x - 1][gameinfo->pl_y] == 'M')
+		death(gameinfo);
 }
 
 void	a_movement(t_solong *gameinfo)
@@ -58,9 +49,9 @@ void	a_movement(t_solong *gameinfo)
 		gameinfo->pl_y -= 1;
 		gameinfo->map[gameinfo->pl_x][gameinfo->pl_y] = 'P';
 		free_img(gameinfo);
-		wind_images(gameinfo, 0);
+		wind_images(gameinfo, 2);
 		gameinfo->playermovs++;
-		ft_printf("number of movements: %i\n", gameinfo->playermovs);
+		display_move(gameinfo, "Move :");
 	}
 	else if (gameinfo->map[gameinfo->pl_x][gameinfo->pl_y - 1] == 'C')
 	{
@@ -69,12 +60,14 @@ void	a_movement(t_solong *gameinfo)
 		gameinfo->map[gameinfo->pl_x][gameinfo->pl_y] = 'P';
 		gameinfo->c_to_get--;
 		free_img(gameinfo);
-		wind_images(gameinfo, 0);
+		wind_images(gameinfo, 2);
 		gameinfo->playermovs++;
-		ft_printf("number of movements: %i\n", gameinfo->playermovs);
+		display_move(gameinfo, "Move :");
 	}
 	else if (gameinfo->map[gameinfo->pl_x][gameinfo->pl_y - 1] == 'E')
 		finish(gameinfo);
+	else if (gameinfo->map[gameinfo->pl_x][gameinfo->pl_y - 1] == 'M')
+		death(gameinfo);
 }
 
 void	s_movement(t_solong *gameinfo)
@@ -87,7 +80,7 @@ void	s_movement(t_solong *gameinfo)
 		free_img(gameinfo);
 		wind_images(gameinfo, 0);
 		gameinfo->playermovs++;
-		ft_printf("number of movements: %i\n", gameinfo->playermovs);
+		display_move(gameinfo, "Move :");
 	}
 	else if (gameinfo->map[gameinfo->pl_x + 1][gameinfo->pl_y] == 'C')
 	{
@@ -98,10 +91,12 @@ void	s_movement(t_solong *gameinfo)
 		free_img(gameinfo);
 		wind_images(gameinfo, 0);
 		gameinfo->playermovs++;
-		ft_printf("number of movements: %i\n", gameinfo->playermovs);
+		display_move(gameinfo, "Move :");
 	}
 	else if (gameinfo->map[gameinfo->pl_x + 1][gameinfo->pl_y] == 'E')
 		finish(gameinfo);
+	else if (gameinfo->map[gameinfo->pl_x + 1][gameinfo->pl_y] == 'M')
+		death(gameinfo);
 }
 
 void	d_movement(t_solong *gameinfo)
@@ -112,9 +107,9 @@ void	d_movement(t_solong *gameinfo)
 		gameinfo->pl_y += 1;
 		gameinfo->map[gameinfo->pl_x][gameinfo->pl_y] = 'P';
 		free_img(gameinfo);
-		wind_images(gameinfo, 0);
+		wind_images(gameinfo, 3);
 		gameinfo->playermovs++;
-		ft_printf("number of movements: %i\n", gameinfo->playermovs);
+		display_move(gameinfo, "Move :");
 	}
 	else if (gameinfo->map[gameinfo->pl_x][gameinfo->pl_y + 1] == 'C')
 	{
@@ -123,10 +118,12 @@ void	d_movement(t_solong *gameinfo)
 		gameinfo->map[gameinfo->pl_x][gameinfo->pl_y] = 'P';
 		gameinfo->c_to_get--;
 		free_img(gameinfo);
-		wind_images(gameinfo, 0);
+		wind_images(gameinfo, 3);
 		gameinfo->playermovs++;
-		ft_printf("number of movements: %i\n", gameinfo->playermovs);
+		display_move(gameinfo, "Move :");
 	}
 	else if (gameinfo->map[gameinfo->pl_x][gameinfo->pl_y + 1] == 'E')
 		finish(gameinfo);
+	else if (gameinfo->map[gameinfo->pl_x][gameinfo->pl_y + 1] == 'M')
+		death(gameinfo);
 }

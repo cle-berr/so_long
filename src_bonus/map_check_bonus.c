@@ -6,7 +6,7 @@
 /*   By: cle-berr <cle-berr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 09:36:37 by cle-berr          #+#    #+#             */
-/*   Updated: 2024/12/11 12:06:23 by cle-berr         ###   ########.fr       */
+/*   Updated: 2024/12/19 13:07:53 by cle-berr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,6 @@ static bool	check_char(t_solong *gameinfo)
 
 bool	mapcheck(t_solong *gameinfo)
 {
-	if (gameinfo->x > 15 || gameinfo->y > 30)
-		return (error("Map must be smaller to be playable."));
 	if (!check_shape(gameinfo))
 		return (error("Invalid shape."));
 	if (!check_walls(gameinfo))
