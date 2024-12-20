@@ -6,7 +6,7 @@
 /*   By: cle-berr <cle-berr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 14:48:53 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/12/19 17:01:28 by cle-berr         ###   ########.fr       */
+/*   Updated: 2024/12/20 17:11:12 by cle-berr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ typedef struct s_solong
 }	t_solong;
 
 bool	other_charac(int x, int y, t_solong *gameinfo);
-void	get_map(int fd, t_solong *gameinfo);
+int		get_map(int fd, t_solong *gameinfo);
 void	create_window(t_solong *gameinfo);
 void	manage_loop(t_solong *gameinfo);
 void	wind_images(t_solong *gameinfo, int side);
@@ -68,9 +68,10 @@ bool	check_path(t_solong *gameinfo);
 int		close_game(t_solong *gameinfo);
 void	free_maps(char **map);
 void	free_img(t_solong *gameinfo);
-bool	error(char *msg);
+int		error(char *msg);
 void	death(t_solong *gameinfo);
 void	finish(t_solong *gameinfo);
 void	display_move(t_solong *gameinfo, char *msg);
+void	start_screen(t_solong *gameinfo);
 
 #endif

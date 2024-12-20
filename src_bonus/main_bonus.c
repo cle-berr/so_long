@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cle-berr <cle-berr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 09:36:43 by cle-berr          #+#    #+#             */
-/*   Updated: 2024/12/18 17:23:41 by cle-berr         ###   ########.fr       */
+/*   Updated: 2024/12/20 18:46:03 by cle-berr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,16 +54,17 @@ int	main(int argc, char **argv)
 
 	if (argc != 2 || !ber(argv[1]))
 	{
-		error("argument invalid.");
+		error("Argument invalid.");
 		return (-1);
 	}
 	fd = open(argv[1], O_RDONLY);
 	if (fd == -1)
 	{
-		error("maps can't be open.");
+		error("Maps can't be open.");
 		return (-1);
 	}
-	get_map(fd, &gameinfo);
+	if (!get_map(fd, &gameinfo))
+		return (error("Map is invalid"));
 	if (!mapcheck(&gameinfo))
 	{
 		free_maps(gameinfo.map);

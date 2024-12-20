@@ -6,17 +6,17 @@
 /*   By: cle-berr <cle-berr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 11:47:59 by cle-berr          #+#    #+#             */
-/*   Updated: 2024/12/19 15:08:16 by cle-berr         ###   ########.fr       */
+/*   Updated: 2024/12/20 14:34:12 by cle-berr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/solong.h"
 
-bool	error(char *msg)
+int	error(char *msg)
 {
 	ft_printf("Error\n");
 	ft_printf("%s\n", msg);
-	return (false);
+	return (-1);
 }
 
 bool	other_charac(int x, int y, t_solong *gameinfo)

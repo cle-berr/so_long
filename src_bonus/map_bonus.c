@@ -6,7 +6,7 @@
 /*   By: cle-berr <cle-berr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 09:36:30 by cle-berr          #+#    #+#             */
-/*   Updated: 2024/12/19 15:08:54 by cle-berr         ###   ########.fr       */
+/*   Updated: 2024/12/20 14:54:33 by cle-berr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,19 +37,26 @@ static void	get_player_position(t_solong *gameinfo)
 
 void	verif_map(t_solong *gameinfo, char *line)
 {
+	unsigned long	i;
+
+	i = 1;
 	if (gameinfo->x > 15 || gameinfo->y > 30)
 	{
 		free(line);
 		exit(error("Map must be smaller to be playable."));
 	}
-	if (line[ft_strlen(line) - 1] == '\n' && line[ft_strlen(line) - 2] == '\n')
+	while (i != ft_strlen(line) - 1)
 	{
-		free(line);
-		exit(error("Multiple '\\n' find in map."));
+		if (line[i - 1] == '\n' && line[i] == '\n')
+		{
+			free(line);
+			exit(error("Multiple '\\n' find in map."));
+		}
+		i++;
 	}
 }
 
-void	get_map(int fd, t_solong *gameinfo)
+int	get_map(int fd, t_solong *gameinfo)
 {
 	char	*line;
 	char	*new_line;
@@ -57,7 +64,7 @@ void	get_map(int fd, t_solong *gameinfo)
 
 	line = get_next_line(fd);
 	if (!line)
-		return ;
+		return (0);
 	gameinfo->y = ft_strlen(line) - 1;
 	gameinfo->x = 1;
 	new_line = get_next_line(fd);
@@ -74,4 +81,5 @@ void	get_map(int fd, t_solong *gameinfo)
 	gameinfo->map = ft_split(line, '\n');
 	free(line);
 	get_player_position(gameinfo);
+	return (1);
 }
