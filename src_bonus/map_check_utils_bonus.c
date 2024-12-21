@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_check_utils_bonus.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cle-berr <cle-berr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: skikk <skikk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 11:47:59 by cle-berr          #+#    #+#             */
-/*   Updated: 2024/12/20 14:34:12 by cle-berr         ###   ########.fr       */
+/*   Updated: 2024/12/21 15:24:23 by skikk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	error(char *msg)
 {
 	ft_printf("Error\n");
 	ft_printf("%s\n", msg);
-	return (-1);
+	return (0);
 }
 
 bool	other_charac(int x, int y, t_solong *gameinfo)

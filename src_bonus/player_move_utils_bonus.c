@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player_move_utils_bonus.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cle-berr <cle-berr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: skikk <skikk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 15:47:57 by cle-berr          #+#    #+#             */
-/*   Updated: 2024/12/19 17:02:08 by cle-berr         ###   ########.fr       */
+/*   Updated: 2024/12/21 16:20:24 by skikk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,13 @@ void	death(t_solong *gameinfo)
 	gameinfo->playermovs++;
 	ft_printf("Your dead with %i movements\n" \
 					, gameinfo->playermovs);
-	mlx_string_put(gameinfo->mlx_ptr, gameinfo->window_ptr, \
-		10, 20, 0xFFFFFF, "Your Dead");
-	close_game(gameinfo);
+	free_img(gameinfo);
+	free_maps(gameinfo->map);
+	mlx_clear_window(gameinfo->mlx_ptr, gameinfo->window_ptr);
+	mlx_destroy_window(gameinfo->mlx_ptr, gameinfo->window_ptr);
+	mlx_destroy_display(gameinfo->mlx_ptr);
+	free(gameinfo->mlx_ptr);
+	death_screen(gameinfo);
 }
 
 void	display_move(t_solong *gameinfo, char *msg)
