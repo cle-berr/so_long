@@ -12,7 +12,7 @@ SRC_BONUS = src_bonus/main_bonus.c src_bonus/map_bonus.c \
 			src_bonus/player_move_bonus.c src_bonus/map_check_bonus.c \
 			src_bonus/check_walls_bonus.c src_bonus/pathcheck_bonus.c \
 			src_bonus/map_check_utils_bonus.c src_bonus/player_move_utils_bonus.c \
-			src_bonus/start_screen.c
+			src_bonus/start_screen.c src_bonus/death_screen.c
 
 all: libft printf $(NAME)
 

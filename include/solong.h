@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   solong.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cle-berr <cle-berr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: skikk <skikk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 14:48:53 by ealgar-c          #+#    #+#             */
-/*   Updated: 2024/12/20 17:11:12 by cle-berr         ###   ########.fr       */
+/*   Updated: 2024/12/21 16:57:18 by skikk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,9 @@ typedef struct s_solong
 	void	*coin;
 	void	*exit;
 	void	*mob;
+	void	*startscreen;
 	char	**map;
+	int		fd;
 	int		x;
 	int		y;
 	int		pl_x;
@@ -73,5 +75,7 @@ void	death(t_solong *gameinfo);
 void	finish(t_solong *gameinfo);
 void	display_move(t_solong *gameinfo, char *msg);
 void	start_screen(t_solong *gameinfo);
+void	death_screen(t_solong *gameinfo);
+int		start_fuction(t_solong *gameinfo, int fd, int first);
 
 #endif
